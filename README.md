@@ -1,62 +1,31 @@
-# Rating System with Frontend
-This project demonstrates the integration of a smart contract with a frontend application using Ethereum, React, and Hardhat.
+# metacrafters_ETH-AVAX-PROOF_Project_Module_2
+This report contains project assessment code for the ETH + AVAX PROOF course under metacrafter.
 
-# Smart Contract
-The smart contract used in this project is Assessment.sol. It is a simple contract that allows you to set and fetch a greeting message.
+# Create a Token Using ERC20 on loacal HardHat
 
-# Frontend
-The frontend application is built using React and interacts with the deployed smart contract. 
-The main functionality of the frontend includes fetching the current greeting and setting a new greeting message.
+This Solidity program is a simple  program that demonstrates the basic syntax and functionality of the Solidity programming language. The purpose of this program is to Create a Token Using ERC20 on loacal HardHat.
 
-# Prerequisites
-Node.js
-MetaMask extension for your browser
-# Getting Started
+## Project: Function Frontend of Smart Contract Management
+For this project, create a simple contract with 2-3 functions. Then show the values of those functions in frontend of the application. You can use this starter template to get a head start.
 
-Clone the repository:
-**git clone**
+## Description
+The files index.js, MySmartContract.sol, and deploy.js contain the necessary code to interact with the smart contract through a front-end interface..
 
-#Install the dependencies:
-**cd npm install**
+## EXECUTION
+After cloning GitHub, you will want to do the following to get the code running on your computer.
 
-#Start a local Ethereum network:
-**npx hardhat node**
-This command starts a local Ethereum network using Hardhat. Make sure to note the network URL and use it to configure MetaMask in the next step.
+1. Inside the project directory, in the terminal type: npm i
 
-#Configure MetaMask:
-1. Install the MetaMask extension for your browser. . Create an Ethereum network in MetaMask and set the network URL to connect to your local Hardhat network. 
-2. Import an account from your local Hardhat network into MetaMask. .
-3. Deploy the Smart Contract:
+2. Open two additional terminals in your VS code.
 
-To deploy the Assessment smart contract to your local network, run the following command in your project directory:
-**npx hardhat run scripts/deploy.js --network localhost**
+3. In the second terminal, type: npx hardhat node
 
-Make sure the local Ethereum network is running before deploying the contract.
+4. In the third terminal, type: npx hardhat run --network localhost scripts/deploy.js (Note: You can also verify the address of deployment in the contractAddress variable in index.js file)
 
-#Update the Frontend Configuration:
-In the index.js file, update the greeterAddress variable with the deployed contract address obtained from the deployment step.
+5. Back in the first terminal, type npm run dev to launch the frontend.
 
-#Start the Frontend Development Server:
-**npm run dev**
-
-Open your browser and navigate to http://localhost:3000 to access the frontend application.
-
-# Usage
-The main page of the frontend application displays the current greeting fetched from the smart contract.
-To update the greeting, enter a new message in the input field and click the "Set Greeting" button. Make sure to have funds in the MetaMask account connected to the local Ethereum network.
-The updated greeting will be stored on the blockchain, and the page will display the new greeting.
-
-# Resources
-1. Ethereum
-2. React
-3. Hardhat
-4. MetaMask
+After this, the project will be running on your local host, typically at `http://localhost:3000/`.
 
 
-## Author
-
-ADITYA AROH
-
-## License
-
-This project is licensed under the MIT License - see the License.md file for details.
+## Project By
+- Aditya Aroh
