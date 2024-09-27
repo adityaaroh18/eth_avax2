@@ -6,7 +6,7 @@ export default function HomePage() {
   const [ethWallet, setEthWallet] = useState(undefined);
   const [account, setAccount] = useState(undefined);
   const [atm, setATM] = useState(undefined);
-  const [Rating, setBalance] = useState(undefined);
+  const [Temperature, setBalance] = useState(undefined);
 
   const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
   const atmABI = atm_abi.abi;
@@ -59,19 +59,19 @@ export default function HomePage() {
     }
   }
 
-  const PositiveRating = async() => {
+  const IncreaseTemperature = async() => {
     if (atm) {
-      const Rate = document.getElementById("amount").value;
-      let tx = await atm.Positiverating(Rate);
+      const Temp = document.getElementById("amount").value;
+      let tx = await atm.Increasetemperature(Temp);
       await tx.wait()
       getBalance();
     }
   }
 
-  const NegativeRating = async() => {
+  const DecreaseTemperature = async() => {
     if (atm) {
-      const Rate = document.getElementById("amount").value;
-      let tx = await atm.Negativerating(Rate);
+      const Temp = document.getElementById("amount").value;
+      let tx = await atm.Decreasetemperature(Temp);
       await tx.wait()
       getBalance();
     }
@@ -80,7 +80,7 @@ export default function HomePage() {
   const initUser = () => {
     // Check to see if user has Metamask
     if (!ethWallet) {
-      return <p>Please install Metamask in order to use this Rating System.</p>
+      return <p>Please install Metamask in order to use this Temperature System.</p>
     }
 
     // Check to see if user is connected. If not, connect to their account
@@ -88,29 +88,29 @@ export default function HomePage() {
       return <button onClick={connectAccount}>Please connect your Metamask wallet</button>
     }
 
-    if (Rating == undefined) {
+    if (Temperature == undefined) {
       getBalance();
     }
 
 return (
   <div className="h-full flex flex-col items-center justify-center">
-     <h6 className="mt-2 mb-40 border-2 border-neutral-600 border-neutral-500 p-1 rounded text-xs">
-      <p>Product: {account}</p>
+     <h6 className="mt-2 mb-40 border-2 border-neutral-600 border-neutral-500 p-1 rounded text-xl">
+      <p>Induction : {account}</p>
       </h6>
       <h6 className="flex justify-center font-black text-5xl">
-      <p>Rating : {Rating}</p>
+      <p>Heat Temperature : {Temperature}</p>
       </h6>
      
       <div className="flex items-center justify-evenly">
-          <button className="btn m-2" onClick={PositiveRating}>
-          +ve Rating
+          <button className="btn m-2" onClick={IncreaseTemperature}>
+          Increase
           </button>
-          <button className="btn m-2" onClick={NegativeRating}>
-          -Ve Rating
+          <button className="btn m-2" onClick={DecreaseTemperature}>
+          Decrease
           </button>
       </div>
       <form className="flex items-center justify-center">
-          <label className="text-xl me-1">Rate:</label>
+          <label className="text-xl me-1">Temp:</label>
           <input
               id="amount"
               type="number"
@@ -146,8 +146,8 @@ return (
 
   <div className="grid grid-cols-2 gap-63">
       <header className="col-span-1 flex items-center">
-          <h1 className="font-normal text-8xl text-cyan-400">
-          Rating System
+          <h1 className="font-normal text-7xl text-red-400">
+          Induction Temperature
           </h1>
       </header>
 
