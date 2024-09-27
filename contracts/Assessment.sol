@@ -5,56 +5,56 @@ pragma solidity ^0.8.9;
 
 contract Assessment {
     address payable public owner;
-    uint256 public Rating;
+    uint256 public Temperature;
 
-    event PositiveRating(uint256 Rate);
-    event NegativeRating(uint256 Rate);
+    event IncreaseTemperature(uint256 Temp);
+    event DecreaseTemperature(uint256 Temp);
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
-        Rating = initBalance;
+        Temperature = initBalance;
     }
 
     function getBalance() public view returns(uint256){
-        return Rating;
+        return Temperature;
     }
 
-    function Positiverating(uint256 _Rate) public payable {
-        uint _PreviousRating = Rating;
+    function Increasetemperature(uint256 _Temp) public payable {
+        uint _Previous = Temperature;
 
         // make sure this is the owner
         require(msg.sender == owner, "You are not the owner of this account");
 
         // perform transaction
-        Rating += _Rate;
+        Temperature += _Temp;
 
         // assert transaction completed successfully
-        assert(Rating == _PreviousRating + _Rate);
+        assert(Temperature == _Previous + _Temp);
 
         // emit the event
-        emit PositiveRating(_Rate);
+        emit IncreaseTemperature(_Temp);
     }
 
     // custom error
-    error InsufficientRating(uint256 Rating, uint256 NegativeRatingRate);
+    error Insufficient(uint256 Temperature, uint256 DecreasetemperatureRate);
 
-    function Negativerating(uint256 _NegativeRatingRate) public {
+    function Decreasetemperature(uint256 _Decrease) public {
         require(msg.sender == owner, "You are not the owner of this account");
-        uint _PreviousRating = Rating;
-        if (Rating < _NegativeRatingRate) {
-            revert InsufficientRating({
-                Rating: Rating,
-                NegativeRatingRate: _NegativeRatingRate
+        uint _Previous = Temperature;
+        if (Temperature < _Decrease) {
+            revert Insufficient({
+                Temperature: Temperature,
+                DecreasetemperatureRate: _Decrease
             });
         }
 
-        // NegativeRating the given Rate
-        Rating -= _NegativeRatingRate;
+        // DecreaseTemperature the given Temp
+        Temperature -= _Decrease;
 
-        // assert the Rating is correct
-        assert(Rating == (_PreviousRating - _NegativeRatingRate));
+        // assert the Temperature is correct
+        assert(Temperature == (_Previous - _Decrease));
 
         // emit the event
-        emit NegativeRating(_NegativeRatingRate);
+        emit DecreaseTemperature(_Decrease);
     }
 }
